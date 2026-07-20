@@ -1,17 +1,13 @@
 const express = require("express");
 const dotenv = require("dotenv");
-// const connectDB = require("./config/db");
-
-const errorHandler = require("./middleware/errorMiddleware");
+const cors = require("cors");
 
 dotenv.config();
-
-// Connect to MongoDB (Enable when MongoDB is ready)
-// connectDB();
 
 const app = express();
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 
 // Routes
@@ -26,7 +22,7 @@ app.get("/", (req, res) => {
     res.send("🚀 Local Service Finder Backend Running");
 });
 
-// 404 Route Handler
+// 404 Route
 app.use((req, res) => {
     res.status(404).json({
         success: false,
@@ -34,10 +30,11 @@ app.use((req, res) => {
     });
 });
 
-// Global Error Handler
+// Error Handler
+const errorHandler = require("./middleware/errorMiddleware");
 app.use(errorHandler);
 
-// Server
+// Start Server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

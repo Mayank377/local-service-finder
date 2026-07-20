@@ -9,11 +9,13 @@ const {
 
 const protect = require("../middleware/authMiddleware");
 
-// Public Routes
+// Register User
 router.post("/register", registerUser);
+
+// Login User
 router.post("/login", loginUser);
 
-// Protected Route
+// Logged-in User Profile
 router.get("/profile", protect, getUserProfile);
 
 module.exports = router;
