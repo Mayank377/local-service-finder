@@ -1,0 +1,125 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f4f7fb;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+width:900px;
+display:flex;
+background:#fff;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.left{
+flex:1;
+background:#2563eb;
+color:white;
+padding:50px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.left h1{
+font-size:35px;
+margin-bottom:20px;
+}
+
+.left p{
+line-height:1.7;
+}
+
+.right{
+flex:1;
+padding:50px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.register-card{
+width:100%;
+}
+
+.register-card h2{
+margin-bottom:25px;
+}
+
+.inputBox{
+margin-bottom:20px;
+}
+
+.inputBox label{
+display:block;
+margin-bottom:6px;
+font-weight:500;
+}
+
+.inputBox input{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+.passwordBox{
+display:flex;
+}
+
+.passwordBox input{
+flex:1;
+}
+
+.passwordBox button{
+width:50px;
+border:none;
+background:#2563eb;
+color:white;
+cursor:pointer;
+border-radius:0 8px 8px 0;
+}
+
+.registerBtn{
+width:100%;
+padding:12px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+margin-top:10px;
+}
+
+.registerBtn:hover{
+background:#1d4ed8;
+}
+
+.login{
+margin-top:20px;
+text-align:center;
+}
+
+.login a{
+text-decoration:none;
+color:#2563eb;
+font-weight:600;
+}
+
+#message{
+margin-top:15px;
+text-align:center;
+font-weight:600;
+}
