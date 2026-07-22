@@ -1,459 +1,708 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Local Service Finder</title>
+    <title>Local Service Finder | Find Trusted Professionals Near You</title>
 
-    <meta name="description" content="Find trusted plumbers, electricians, carpenters, cleaners and other local professionals near you.">
+    <meta name="description"
+        content="Book trusted plumbers, electricians, carpenters, tutors, mechanics, cleaners and more in just a few clicks.">
 
+    <meta name="keywords"
+        content="Local Services, Plumber, Electrician, Carpenter, Tutor, Mechanic, Home Services">
+
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="lsf.css">
+
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+    <!-- ================= TOP BAR ================= -->
 
-<nav>
-
-    <div class="logo">
-        <h2>Local Service Finder</h2>
+    <div class="top-bar">
+        🎉 Get 20% OFF on your first booking | Trusted by 10,000+ Customers
     </div>
 
-    <ul>
+    <!-- ================= NAVBAR ================= -->
 
-        <li><a href="#home">Home</a></li>
+    <header>
 
-        <li><a href="#services">Services</a></li>
+        <nav class="navbar">
 
-        <li><a href="#providers">Providers</a></li>
+            <a href="#" class="logo">
 
-        <li><a href="#about">About</a></li>
+                <i class="fa-solid fa-screwdriver-wrench"></i>
 
-        <li><a href="#contact">Contact</a></li>
+                <span>Local Service Finder</span>
 
-    </ul>
+            </a>
 
-    <div class="buttons">
+            <ul class="nav-links">
 
-       
-       <button id="loginBtn">Login</button>
+                <li><a href="#home">Home</a></li>
 
-<button id="registerBtn">Register</button>
+                <li><a href="#services">Services</a></li>
 
-    </div>
+                <li><a href="#providers">Professionals</a></li>
 
-</nav>
+                <li><a href="#about">About</a></li>
 
-<main>
+                <li><a href="#contact">Contact</a></li>
 
-<!-- ================= HERO ================= -->
+            </ul>
 
-<section id="home" class="hero">
+            <div class="nav-buttons">
 
-    <div class="hero-text">
+                <a href="login.html" class="login-btn">
+    Login
+</a>
 
-        <h1>Find Trusted Local Professionals Near You</h1>
+                <a href="register.html" class="register-btn">
+                    Get Started
 
-        <p>
-            Book verified plumbers, electricians, carpenters,
-            cleaners, mechanics, tutors and many more trusted
-            professionals with just a few clicks.
-        </p>
+                </a>
 
-        <button id="exploreBtn">
-            Explore Services
-        </button>
+            </div>
+
+            <div class="menu-btn">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-left" data-aos="fade-right">
+
+            <span class="tag">
+
+                ⭐ India's Trusted Service Marketplace
+
+            </span>
+
+            <h1>
+
+                Find Trusted Local Professionals For Every Home Need.
+
+            </h1>
+
+            <p>
+
+                Book verified plumbers, electricians, carpenters,
+                cleaners, mechanics, tutors and many other trusted
+                professionals in just a few clicks.
+
+            </p>
+
+            <!-- Search -->
+
+            <div class="hero-search">
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input type="text"
+                        placeholder="Search Service">
+
+                </div>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <input type="text"
+                        placeholder="Enter Location">
+
+                </div>
+
+                <button>
+
+                    Search
+
+                </button>
+
+            </div>
+
+            <!-- Buttons -->
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn">
+
+                    Explore Services
+
+                </button>
+
+                <button class="secondary-btn">
+
+                    Become a Provider
+
+                </button>
+
+            </div>
+
+            <!-- Small Stats -->
+
+            <div class="mini-stats">
+
+                <div>
+
+                    <h3>10K+</h3>
+
+                    <p>Customers</p>
+
+                </div>
+
+                <div>
+
+                    <h3>500+</h3>
+
+                    <p>Professionals</p>
+
+                </div>
+
+                <div>
+
+                    <h3>4.9★</h3>
+
+                    <p>Rating</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Right -->
+
+        <div class="hero-right" data-aos="fade-left">
+
+            <img src="images/hero.png" alt="Hero Image">
+
+            <!-- Floating Card -->
+
+            <div class="floating-card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <div>
+
+                    <h4>Verified Professionals</h4>
+
+                    <p>100% Background Verified</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= TRUSTED BRANDS ================= -->
+
+<section class="trusted">
+
+    <p>Trusted by Thousands of Customers Across India</p>
+
+    <div class="brand-box">
+
+        <span>⭐ 4.9 Google Rating</span>
+
+        <span>✔ Secure Payments</span>
+
+        <span>✔ Verified Experts</span>
+
+        <span>✔ Same Day Service</span>
 
     </div>
 
 </section>
 
-<!-- ================= SEARCH ================= -->
-
-<section class="search">
-
-    <h2>Search Your Service</h2>
-
-    <div class="search-box">
-
-        <input
-        type="text"
-        placeholder="Enter Service">
-
-        <input
-        type="text"
-        placeholder="Enter Location">
-
-        <button id="searchBtn">
-            Search
-        </button>
-
-    </div>
-
-</section>
-
-<!-- ================= SERVICES ================= -->
-
-<section id="services" class="services">
-
-<h2>Popular Services</h2>
-
-<div class="service-box">
-
-<div class="card">
-
-<h3>🔧 Plumber</h3>
-
-<p>
-Pipe fitting, leakage repair,
-bathroom installation and maintenance.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>⚡ Electrician</h3>
-
-<p>
-Electrical wiring,
-switch installation,
-fan and light repair.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🪚 Carpenter</h3>
-
-<p>
-Furniture making,
-door fitting,
-modular furniture repair.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🧹 Cleaner</h3>
-
-<p>
-Professional home,
-office and deep cleaning services.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🚗 Mechanic</h3>
-
-<p>
-Two wheeler and
-car servicing by verified mechanics.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>👨‍🏫 Tutor</h3>
-
-<p>
-Experienced tutors
-for school, college and competitive exams.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ================= PROVIDERS ================= -->
+<!-- ================= FEATURED PROFESSIONALS ================= -->
 
 <section id="providers" class="providers">
 
-<h2>Top Rated Professionals</h2>
+    <h2 class="section-title">Featured Professionals</h2>
 
-<div class="provider-box">
+    <p class="section-subtitle">
+        Meet our top-rated verified experts.
+    </p>
 
-<div class="provider">
+    <div class="provider-grid">
 
-<h3>Rahul Sharma</h3>
+        <div class="provider-card">
 
-<p>⭐ 4.9 Rating</p>
+            <img src="images/provider1.jpg" alt="Professional">
 
-<p>Experience : 7 Years</p>
+            <span class="verified">
+                <i class="fa-solid fa-circle-check"></i> Verified
+            </span>
 
-<p>Starting Price : ₹300</p>
+            <h3>Rahul Sharma</h3>
 
-<button class="bookBtn">
-Book Now
-</button>
+            <p>Electrician</p>
 
-</div>
+            <div class="rating">
 
-<div class="provider">
+                ⭐⭐⭐⭐⭐
 
-<h3>Amit Verma</h3>
+                <span>(4.9)</span>
 
-<p>⭐ 4.8 Rating</p>
+            </div>
 
-<p>Experience : 5 Years</p>
+            <p>150+ Jobs Completed</p>
 
-<p>Starting Price : ₹400</p>
+            <h4>Starting ₹299</h4>
 
-<button class="bookBtn">
-Book Now
-</button>
+            <button>Book Now</button>
 
-</div>
+        </div>
 
-<div class="provider">
+        <div class="provider-card">
 
-<h3>Vikas Patel</h3>
+            <img src="images/provider2.jpg" alt="Professional">
 
-<p>⭐ 4.7 Rating</p>
+            <span class="verified">
+                <i class="fa-solid fa-circle-check"></i> Verified
+            </span>
 
-<p>Experience : 8 Years</p>
+            <h3>Amit Verma</h3>
 
-<p>Starting Price : ₹500</p>
+            <p>Plumber</p>
 
-<button class="bookBtn">
-Book Now
-</button>
+            <div class="rating">
 
-</div>
+                ⭐⭐⭐⭐⭐
 
-</div>
+                <span>(4.8)</span>
+
+            </div>
+
+            <p>120+ Jobs Completed</p>
+
+            <h4>Starting ₹349</h4>
+
+            <button>Book Now</button>
+
+        </div>
+
+        <div class="provider-card">
+
+            <img src="images/provider3.jpg" alt="Professional">
+
+            <span class="verified">
+                <i class="fa-solid fa-circle-check"></i> Verified
+            </span>
+
+            <h3>Priya Singh</h3>
+
+            <p>Home Cleaner</p>
+
+            <div class="rating">
+
+                ⭐⭐⭐⭐⭐
+
+                <span>(4.9)</span>
+
+            </div>
+
+            <p>200+ Jobs Completed</p>
+
+            <h4>Starting ₹399</h4>
+
+            <button>Book Now</button>
+
+        </div>
+
+    </div>
 
 </section>
 
-<!-- ================= WHY CHOOSE ================= -->
+<!-- ================= WHY CHOOSE US ================= -->
 
 <section id="about" class="why">
 
-<h2>Why Choose Us?</h2>
+    <h2 class="section-title">
+        Why Choose Us
+    </h2>
 
-<div class="why-box">
+    <div class="why-grid">
 
-<div>
+        <div class="why-card">
 
-<h3>✔ Verified Professionals</h3>
+            <i class="fa-solid fa-user-check"></i>
 
-<p>
-Every professional is verified
-before joining our platform.
-</p>
+            <h3>Verified Experts</h3>
 
-</div>
+            <p>
+                Every professional is verified before joining our platform.
+            </p>
 
-<div>
+        </div>
 
-<h3>✔ Affordable Pricing</h3>
+        <div class="why-card">
 
-<p>
-Transparent pricing
-without hidden charges.
-</p>
+            <i class="fa-solid fa-wallet"></i>
 
-</div>
+            <h3>Affordable Pricing</h3>
 
-<div>
+            <p>
+                Transparent pricing with no hidden charges.
+            </p>
 
-<h3>✔ Fast Booking</h3>
+        </div>
 
-<p>
-Book trusted experts
-within a few seconds.
-</p>
+        <div class="why-card">
 
-</div>
+            <i class="fa-solid fa-clock"></i>
 
-<div>
+            <h3>Fast Booking</h3>
 
-<h3>✔ Customer Support</h3>
+            <p>
+                Book your service in less than 60 seconds.
+            </p>
 
-<p>
-Dedicated support
-to solve your queries quickly.
-</p>
+        </div>
 
-</div>
+        <div class="why-card">
 
-</div>
+            <i class="fa-solid fa-headset"></i>
 
-</section>
+            <h3>24×7 Support</h3>
 
-<!-- ================= STATISTICS ================= -->
+            <p>
+                Friendly customer support whenever you need help.
+            </p>
 
-<section class="stats">
+        </div>
 
-<div class="stat">
-
-<h2>1000+</h2>
-
-<p>Happy Customers</p>
-
-</div>
-
-<div class="stat">
-
-<h2>250+</h2>
-
-<p>Verified Professionals</p>
-
-</div>
-
-<div class="stat">
-
-<h2>20+</h2>
-
-<p>Services Available</p>
-
-</div>
-
-<div class="stat">
-
-<h2>15+</h2>
-
-<p>Cities Covered</p>
-
-</div>
+    </div>
 
 </section>
 
-<!-- ================= REVIEWS ================= -->
+<!-- ================= POPULAR CITIES ================= -->
 
-<section class="reviews">
+<section class="cities">
 
-<h2>Customer Reviews</h2>
+    <h2 class="section-title">
 
-<div class="review-box">
+        Available In Popular Cities
 
-<div class="review">
+    </h2>
 
-<h3>⭐⭐⭐⭐⭐</h3>
+    <div class="city-grid">
 
-<p>
+        <div class="city-card">🏙️ Delhi</div>
 
-Excellent service.
-Booking was simple and the plumber
-arrived on time.
+        <div class="city-card">🏙️ Mumbai</div>
 
-</p>
+        <div class="city-card">🏙️ Indore</div>
 
-<h4>— Rohit Sharma</h4>
+        <div class="city-card">🏙️ Pune</div>
 
-</div>
+        <div class="city-card">🏙️ Jaipur</div>
 
-<div class="review">
+        <div class="city-card">🏙️ Bhopal</div>
 
-<h3>⭐⭐⭐⭐⭐</h3>
+        <div class="city-card">🏙️ Ahmedabad</div>
 
-<p>
+        <div class="city-card">🏙️ Lucknow</div>
 
-Affordable pricing,
-professional behaviour
-and great customer support.
-
-</p>
-
-<h4>— Anjali Verma</h4>
-
-</div>
-
-<div class="review">
-
-<h3>⭐⭐⭐⭐⭐</h3>
-
-<p>
-
-Highly recommended.
-Very satisfied with
-the electrician service.
-
-</p>
-
-<h4>— Priya Singh</h4>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
-<!-- ================= CONTACT ================= -->
+<!-- ================= DOWNLOAD APP ================= -->
+
+<section class="app-section">
+
+    <div class="app-content">
+
+        <h2>
+
+            Download Our Mobile App
+
+        </h2>
+
+        <p>
+
+            Book trusted professionals anytime, anywhere.
+
+        </p>
+
+        <button class="primary-btn">
+
+            <i class="fa-brands fa-google-play"></i>
+
+            Google Play
+
+        </button>
+
+        <button class="secondary-btn">
+
+            <i class="fa-brands fa-apple"></i>
+
+            App Store
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+
+<section class="testimonials">
+
+    <h2 class="section-title">What Our Customers Say</h2>
+
+    <p class="section-subtitle">
+        Trusted by thousands of happy customers across India.
+    </p>
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial-card">
+            <img src="images/user1.jpg" alt="Customer">
+            <h3>Rohit Sharma</h3>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>
+                Excellent service! The electrician arrived on time and fixed everything perfectly.
+            </p>
+        </div>
+
+        <div class="testimonial-card">
+            <img src="images/user2.jpg" alt="Customer">
+            <h3>Neha Gupta</h3>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>
+                Super easy booking experience. Highly recommended!
+            </p>
+        </div>
+
+        <div class="testimonial-card">
+            <img src="images/user3.jpg" alt="Customer">
+            <h3>Amit Verma</h3>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>
+                Affordable pricing and verified professionals. Will definitely use again.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===================== FAQ ===================== -->
+
+<section class="faq">
+
+    <h2 class="section-title">Frequently Asked Questions</h2>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <button class="faq-question">
+                How do I book a service?
+            </button>
+
+            <div class="faq-answer">
+                Visit the service page, choose your provider and click Book Now.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                Are professionals verified?
+            </button>
+
+            <div class="faq-answer">
+                Yes. Every provider goes through identity and quality verification.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                Can I cancel a booking?
+            </button>
+
+            <div class="faq-answer">
+                Yes. You can cancel according to the cancellation policy.
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===================== NEWSLETTER ===================== -->
+
+<section class="newsletter">
+
+    <h2>Stay Updated</h2>
+
+    <p>
+        Subscribe to receive offers and updates.
+    </p>
+
+    <form>
+
+        <input
+            type="email"
+            placeholder="Enter your email"
+            required
+        >
+
+        <button type="submit">
+            Subscribe
+        </button>
+
+    </form>
+
+</section>
+
+<!-- ===================== CONTACT ===================== -->
 
 <section id="contact" class="contact">
 
-<h2>Contact Us</h2>
+    <h2 class="section-title">
+        Contact Us
+    </h2>
 
-<form>
+    <div class="contact-container">
 
-<input
-type="text"
-placeholder="Your Name"
-required>
+        <form class="contact-form">
 
-<input
-type="email"
-placeholder="Your Email"
-required>
+            <input
+                type="text"
+                placeholder="Your Name"
+                required
+            >
 
-<textarea
-placeholder="Write your message..."
-required></textarea>
+            <input
+                type="email"
+                placeholder="Email Address"
+                required
+            >
 
-<button type="submit">
+            <textarea
+                rows="6"
+                placeholder="Your Message"
+            ></textarea>
 
-Send Message
+            <button type="submit">
+                Send Message
+            </button>
 
-</button>
+        </form>
 
-</form>
+    </div>
 
 </section>
 
-<!-- ================= FOOTER ================= -->
+<!-- ===================== FOOTER ===================== -->
 
 <footer>
 
-<div class="footer-content">
+    <div class="footer-container">
 
-<h2>Local Service Finder</h2>
+        <div>
 
-<p>
+            <h3>Local Service Finder</h3>
 
-Connecting customers with trusted
-local professionals across India.
+            <p>
+                Connecting customers with trusted professionals across India.
+            </p>
 
-</p>
+        </div>
 
-<p>
+        <div>
 
-© 2026 Local Service Finder.
-All Rights Reserved.
+            <h3>Quick Links</h3>
 
-</p>
+            <a href="#">Home</a>
+            <a href="#services">Services</a>
+            <a href="#providers">Providers</a>
+            <a href="#contact">Contact</a>
 
-</div>
+        </div>
+
+        <div>
+
+            <h3>Follow Us</h3>
+
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <p class="copyright">
+
+        © 2026 Local Service Finder. All Rights Reserved.
+
+    </p>
 
 </footer>
 
-</main>
+<!-- Scroll To Top -->
 
-<script src="lsf.js"></script>
+<button id="scrollTop">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+<!-- JavaScript -->
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+
+        AOS.init({
+
+            duration: 1000,
+
+            once: true
+
+        });
+
+    </script>
+
+    <script src="lsf.js"></script>
 
 </body>
+
 </html>

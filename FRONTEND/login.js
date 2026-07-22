@@ -1,30 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const loginForm = document.getElementById("loginForm");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
     const message = document.getElementById("message");
     const togglePassword = document.getElementById("togglePassword");
-    const passwordInput = document.getElementById("password");
 
+    // ===============================
     // Show / Hide Password
-    togglePassword.addEventListener("click", () => {
+    // ===============================
+    if (togglePassword) {
 
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            togglePassword.textContent = "🙈";
-        } else {
-            passwordInput.type = "password";
-            togglePassword.textContent = "👁";
-        }
+        togglePassword.addEventListener("click", () => {
 
-    });
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                togglePassword.textContent = "🙈";
+            } else {
+                passwordInput.type = "password";
+                togglePassword.textContent = "👁";
+            }
 
-    // Login
+        });
+
+    }
+
+    // ===============================
+    // Login Form
+    // ===============================
     loginForm.addEventListener("submit", async (e) => {
 
         e.preventDefault();
 
-        const email = document.getElementById("email").value.trim();
+        const email = emailInput.value.trim();
         const password = passwordInput.value.trim();
+
+        // Validation
+        if (!email || !password) {
+            showMessage("Please enter email and password.", "red");
+            return;
+        }
 
         try {
 
@@ -47,33 +62,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (response.ok) {
 
-                // Save complete user data
+                // Save JWT Token
                 localStorage.setItem("token", data.token);
-                localStorage.setItem("user", JSON.stringify(data.user));
 
-                message.style.color = "green";
-                message.textContent = "✅ Login Successful";
+                // Save User (if available)
+                if (data.user) {
+                    localStorage.setItem("user", JSON.stringify(data.user));
+                }
+
+                showMessage("✅ Login Successful!", "green");
 
                 setTimeout(() => {
-                    window.location.href = "lsf.html"; // change to index.html if that's your landing page
+
+                    // Redirect to Landing Page
+                    window.location.href = "lsf.html";
+
                 }, 1000);
 
             } else {
 
-                message.style.color = "red";
-                message.textContent = data.message;
+                showMessage(data.message || "Invalid Email or Password", "red");
 
             }
 
         } catch (error) {
 
-            console.error(error);
+            console.error("Login Error:", error);
 
-            message.style.color = "red";
-            message.textContent = "Unable to connect to the server.";
+            showMessage("❌ Unable to connect to the server.", "red");
 
         }
 
     });
+
+    // ===============================
+    // Helper Function
+    // ===============================
+    function showMessage(text, color) {
+
+        message.textContent = text;
+        message.style.color = color;
+
+    }
 
 });

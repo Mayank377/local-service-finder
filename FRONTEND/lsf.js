@@ -1,155 +1,152 @@
-// =====================================
-// Local Service Finder JavaScript
-// =====================================
+/* ==========================================
+LOCAL SERVICE FINDER
+lsf.js
+========================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+// AOS Animation
+AOS.init({
+    duration: 1000,
+    once: true
+});
 
-    // =====================================
-    // Explore Services
-    // =====================================
+// =============================
+// Scroll To Top Button
+// =============================
 
-    const exploreBtn = document.getElementById("exploreBtn");
+const scrollBtn = document.getElementById("scrollTop");
 
-    if (exploreBtn) {
-        exploreBtn.addEventListener("click", () => {
-            document.getElementById("services").scrollIntoView({
-                behavior: "smooth"
-            });
-        });
-    }
+window.addEventListener("scroll", () => {
 
-    // =====================================
-    // Search Service
-    // =====================================
-
-    const searchBtn = document.getElementById("searchBtn");
-
-    if (searchBtn) {
-        searchBtn.addEventListener("click", () => {
-
-            const inputs = document.querySelectorAll(".search input");
-
-            const service = inputs[0].value.trim();
-            const location = inputs[1].value.trim();
-
-            if (!service || !location) {
-                alert("⚠ Please enter both Service Name and Location.");
-                return;
-            }
-
-            alert(`🔍 Searching for "${service}" in "${location}"...`);
-
-            // Backend integration will be added later.
-        });
-    }
-
-    // =====================================
-    // Login / Register / Logout
-    // =====================================
-
-    const loginBtn = document.getElementById("loginBtn");
-    const registerBtn = document.getElementById("registerBtn");
-
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (user) {
-
-        loginBtn.textContent = `👋 ${user.name}`;
-        loginBtn.disabled = true;
-
-        registerBtn.textContent = "Logout";
-
-        registerBtn.addEventListener("click", () => {
-
-            localStorage.removeItem("token");
-            localStorage.removeItem("user");
-
-            alert("Logged out successfully.");
-
-            window.location.reload();
-
-        });
-
+    if (window.scrollY > 400) {
+        scrollBtn.style.display = "flex";
     } else {
-
-        if (loginBtn) {
-            loginBtn.addEventListener("click", () => {
-                window.location.href = "login.html";
-            });
-        }
-
-        if (registerBtn) {
-            registerBtn.addEventListener("click", () => {
-                window.location.href = "register.html";
-            });
-        }
-
+        scrollBtn.style.display = "none";
     }
 
-    // =====================================
-    // Book Now Buttons
-    // =====================================
+});
 
-    const bookButtons = document.querySelectorAll(".bookBtn");
+scrollBtn.addEventListener("click", () => {
 
-    bookButtons.forEach(button => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
-        button.addEventListener("click", function () {
+});
 
-            const loggedInUser = JSON.parse(localStorage.getItem("user"));
+// Hide initially
+scrollBtn.style.display = "none";
 
-            if (!loggedInUser) {
+// =============================
+// FAQ Accordion
+// =============================
 
-                alert("Please login first to book a service.");
+const questions = document.querySelectorAll(".faq-question");
 
-                window.location.href = "login.html";
+questions.forEach(question => {
 
-                return;
+    question.addEventListener("click", () => {
+
+        const answer = question.nextElementSibling;
+
+        document.querySelectorAll(".faq-answer").forEach(item => {
+
+            if (item !== answer) {
+                item.style.display = "none";
             }
 
-            const provider = this.parentElement.querySelector("h3").textContent;
-
-            alert(`✅ Booking request sent to ${provider}`);
-
-            // Booking API will be connected later.
-
         });
+
+        answer.style.display =
+            answer.style.display === "block"
+                ? "none"
+                : "block";
 
     });
 
-    // =====================================
-    // Contact Form
-    // =====================================
+});
 
-    const contactForm = document.querySelector(".contact form");
+// Hide FAQ answers on page load
 
-    if (contactForm) {
+document.querySelectorAll(".faq-answer").forEach(answer => {
 
-        contactForm.addEventListener("submit", function (e) {
+    answer.style.display = "none";
 
-            e.preventDefault();
+});
 
-            const name = this.querySelector("input[type='text']").value.trim();
-            const email = this.querySelector("input[type='email']").value.trim();
-            const message = this.querySelector("textarea").value.trim();
+// =============================
+// Animated Counter
+// =============================
 
-            if (!name || !email || !message) {
-                alert("⚠ Please fill in all fields.");
-                return;
-            }
+const counters = document.querySelectorAll(".stat-card h2");
 
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const runCounter = (counter) => {
 
-            if (!emailPattern.test(email)) {
-                alert("⚠ Please enter a valid email address.");
-                return;
-            }
+    const target = parseInt(counter.innerText);
 
-            alert("✅ Thank you! Your message has been sent successfully.");
+    let count = 0;
 
-            this.reset();
+    const speed = target / 80;
 
-        });
+    const update = () => {
+
+        count += speed;
+
+        if (count < target) {
+
+            counter.innerText = Math.floor(count);
+
+            requestAnimationFrame(update);
+
+        } else {
+
+            counter.innerText = target + "+";
+
+        }
+
+    };
+
+    update();
+
+};
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            runCounter(entry.target);
+
+            observer.unobserve(entry.target);
+
+        }
+
+    });
+
+});
+
+counters.forEach(counter => {
+
+    observer.observe(counter);
+
+});
+
+// =============================
+// Navbar Shadow
+// =============================
+
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 80) {
+
+        header.style.boxShadow = "0 10px 30px rgba(0,0,0,.12)";
+
+    } else {
+
+        header.style.boxShadow = "0 5px 20px rgba(0,0,0,.06)";
 
     }
 
