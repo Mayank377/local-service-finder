@@ -1,196 +1,208 @@
-let services = [];
+const Service = require("../models/Service");
 
 // =========================
 // Add Service
 // =========================
-const addService = (req, res) => {
-    const { name, category, city, price } = req.body;
+const addService = async (req, res) => {
+    try {
+        const { name, category, city, price, description } = req.body;
 
-    if (!name || !category || !city || !price) {
-        return res.status(400).json({
+        const service = await Service.create({
+            name,
+            category,
+            city,
+            price,
+            description,
+            user: req.user._id
+        });
+
+        res.status(201).json({
+            success: true,
+            message: "Service Added Successfully",
+            service
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
             success: false,
-            message: "All fields are required"
+            message: "Server Error"
         });
     }
-
-    const newService = {
-        id: services.length + 1,
-        name,
-        category,
-        city,
-        price,
-        userId: req.user.id
-    };
-
-    services.push(newService);
-
-    res.status(201).json({
-        success: true,
-        message: "Service added successfully",
-        service: newService
-    });
 };
 
 // =========================
 // Get All Services
 // =========================
-const getServices = (req, res) => {
-    let filteredServices = [...services];
+const getServices = async (req, res) => {
+    try {
 
-    const {
-        city,
-        category,
-        minPrice,
-        maxPrice,
-        search,
-        page = 1,
-        limit = 5
-    } = req.query;
+        const {
+            search,
+            city,
+            category,
+            page = 1,
+            limit = 5
+        } = req.query;
 
-    // Search by Name
-    if (search) {
-        filteredServices = filteredServices.filter(service =>
-            service.name.toLowerCase().includes(search.toLowerCase())
-        );
+        let query = {};
+
+        if (search) {
+            query.name = { $regex: search, $options: "i" };
+        }
+
+        if (city) {
+            query.city = city;
+        }
+
+        if (category) {
+            query.category = category;
+        }
+
+        const services = await Service.find(query)
+            .populate("user", "name email phone")
+            .skip((page - 1) * limit)
+            .limit(Number(limit));
+
+        const total = await Service.countDocuments(query);
+
+        res.json({
+            success: true,
+            total,
+            page: Number(page),
+            services
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            message: "Server Error"
+        });
+
     }
-
-    // Filter by City
-    if (city) {
-        filteredServices = filteredServices.filter(service =>
-            service.city.toLowerCase() === city.toLowerCase()
-        );
-    }
-
-    // Filter by Category
-    if (category) {
-        filteredServices = filteredServices.filter(service =>
-            service.category.toLowerCase() === category.toLowerCase()
-        );
-    }
-
-    // Filter by Minimum Price
-    if (minPrice) {
-        filteredServices = filteredServices.filter(service =>
-            service.price >= Number(minPrice)
-        );
-    }
-
-    // Filter by Maximum Price
-    if (maxPrice) {
-        filteredServices = filteredServices.filter(service =>
-            service.price <= Number(maxPrice)
-        );
-    }
-
-    // Sort by Price (Low to High)
-    filteredServices.sort((a, b) => a.price - b.price);
-
-    // Pagination
-    const currentPage = Number(page);
-    const itemsPerPage = Number(limit);
-
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-
-    const paginatedServices = filteredServices.slice(startIndex, endIndex);
-
-    res.status(200).json({
-        success: true,
-        totalServices: filteredServices.length,
-        currentPage,
-        totalPages: Math.ceil(filteredServices.length / itemsPerPage),
-        services: paginatedServices
-    });
 };
 
 // =========================
-// Get Service By ID
+// Get Single Service
 // =========================
-const getServiceById = (req, res) => {
-    const id = parseInt(req.params.id);
+const getServiceById = async (req, res) => {
 
-    const service = services.find(service => service.id === id);
+    try {
 
-    if (!service) {
-        return res.status(404).json({
-            success: false,
-            message: "Service not found"
+        const service = await Service.findById(req.params.id)
+            .populate("user", "name email phone");
+
+        if (!service) {
+            return res.status(404).json({
+                success: false,
+                message: "Service not found"
+            });
+        }
+
+        res.json({
+            success: true,
+            service
         });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: "Server Error"
+        });
+
     }
 
-    res.status(200).json({
-        success: true,
-        service
-    });
 };
 
 // =========================
 // Update Service
 // =========================
-const updateService = (req, res) => {
-    const service = services.find(s => s.id == req.params.id);
+const updateService = async (req, res) => {
 
-    if (!service) {
-        return res.status(404).json({
-            success: false,
-            message: "Service not found"
+    try {
+
+        const service = await Service.findById(req.params.id);
+
+        if (!service) {
+            return res.status(404).json({
+                success: false,
+                message: "Service not found"
+            });
+        }
+
+        if (service.user.toString() !== req.user._id.toString()) {
+            return res.status(403).json({
+                success: false,
+                message: "Unauthorized"
+            });
+        }
+
+        Object.assign(service, req.body);
+
+        await service.save();
+
+        res.json({
+            success: true,
+            message: "Service Updated",
+            service
         });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: "Server Error"
+        });
+
     }
 
-    // Authorization Check
-    if (service.userId !== req.user.id) {
-        return res.status(403).json({
-            success: false,
-            message: "You are not authorized to update this service"
-        });
-    }
-
-    service.name = req.body.name || service.name;
-    service.category = req.body.category || service.category;
-    service.city = req.body.city || service.city;
-    service.price = req.body.price || service.price;
-
-    res.status(200).json({
-        success: true,
-        message: "Service updated successfully",
-        service
-    });
 };
 
 // =========================
 // Delete Service
 // =========================
-const deleteService = (req, res) => {
-    const serviceIndex = services.findIndex(
-        service => service.id == req.params.id
-    );
+const deleteService = async (req, res) => {
 
-    if (serviceIndex === -1) {
-        return res.status(404).json({
-            success: false,
-            message: "Service not found"
+    try {
+
+        const service = await Service.findById(req.params.id);
+
+        if (!service) {
+            return res.status(404).json({
+                success: false,
+                message: "Service not found"
+            });
+        }
+
+        if (service.user.toString() !== req.user._id.toString()) {
+            return res.status(403).json({
+                success: false,
+                message: "Unauthorized"
+            });
+        }
+
+        await service.deleteOne();
+
+        res.json({
+            success: true,
+            message: "Service Deleted Successfully"
         });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: "Server Error"
+        });
+
     }
 
-    // Authorization Check
-    if (services[serviceIndex].userId !== req.user.id) {
-        return res.status(403).json({
-            success: false,
-            message: "You are not authorized to delete this service"
-        });
-    }
-
-    services.splice(serviceIndex, 1);
-
-    res.status(200).json({
-        success: true,
-        message: "Service deleted successfully"
-    });
 };
 
-// =========================
-// Export All Controllers
-// =========================
 module.exports = {
     addService,
     getServices,
