@@ -14,11 +14,13 @@
     <meta name="keywords"
         content="Local Services, Plumber, Electrician, Carpenter, Tutor, Mechanic, Home Services">
 
+    <!-- Favicon (inline SVG, no external file needed) -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
@@ -37,200 +39,136 @@
 <body>
 
     <!-- ================= TOP BAR ================= -->
-
     <div class="top-bar">
         🎉 Get 20% OFF on your first booking | Trusted by 10,000+ Customers
     </div>
 
-   <!-- ================= NAVBAR ================= -->
+    <!-- ================= NAVBAR ================= -->
+    <header>
+        <nav class="navbar">
 
-<header>
-
-    <nav class="navbar">
-
-        <a href="#" class="logo">
-            <i class="fa-solid fa-screwdriver-wrench"></i>
-            <span>Local Service Finder</span>
-        </a>
-
-        <ul class="nav-links">
-
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#providers">Professionals</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-
-        </ul>
-
-        <div class="nav-buttons" id="navButtons">
-
-            <!-- Guest Buttons -->
-            <a href="login.html" class="login-btn" id="loginBtn">
-                Login
+            <a href="#home" class="logo">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <span>Local Service Finder</span>
             </a>
 
-            <a href="register.html" class="register-btn" id="registerBtn">
-                Get Started
-            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Services</a></li>
+                <li><a href="#providers">Professionals</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
-            <!-- Logged-in User Menu -->
-            <div id="userMenu" style="display: none; align-items: center; gap: 15px;">
+            <div class="nav-buttons" id="navButtons">
 
-                <span id="welcomeUser"></span>
+                <!-- Guest Buttons -->
+                <a href="login.html" class="login-btn" id="loginBtn">Login</a>
+                <a href="register.html" class="register-btn" id="registerBtn">Get Started</a>
 
-                <button class="primary-btn" id="addServiceBtn">
-                    + Add Service
-                </button>
+                <!-- Logged-in User Menu -->
+                <div id="userMenu" style="display:none;align-items:center;gap:15px;">
 
-                <button class="secondary-btn" onclick="logout()">
-                    Logout
+                    <span id="welcomeUser"></span>
+
+                    <button class="primary-btn" id="addServiceBtn">
+                        + Add Service
+                    </button>
+
+                    <button class="secondary-btn" onclick="logout()">
+                        Logout
+                    </button>
+
+                </div>
+
+                <!-- Dark mode toggle: always visible, guest or logged in -->
+                <button id="darkModeBtn" class="dark-btn" title="Toggle Dark Mode" type="button">
+                    🌙
                 </button>
 
             </div>
 
-        </div>
+            <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation menu" type="button">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-        <div class="menu-btn">
-
-            <i class="fa-solid fa-bars"></i>
-
-        </div>
-
-    </nav>
-
-</header>
+        </nav>
+    </header>
 
     <!-- ================= HERO ================= -->
-
     <section class="hero" id="home">
 
         <div class="hero-left" data-aos="fade-right">
 
-            <span class="tag">
+            <span class="tag">⭐ India's Trusted Service Marketplace</span>
 
-                ⭐ India's Trusted Service Marketplace
-
-            </span>
-
-            <h1>
-
-                Find Trusted Local Professionals For Every Home Need.
-
-            </h1>
+            <h1>Find Trusted Local Professionals For Every Home Need.</h1>
 
             <p>
-
                 Book verified plumbers, electricians, carpenters,
                 cleaners, mechanics, tutors and many other trusted
                 professionals in just a few clicks.
-
             </p>
 
-            <!-- Search -->
-<div class="hero-search">
+  
 
-    <div class="input-box">
+<div class="hero-trust">
 
-        <i class="fa-solid fa-magnifying-glass"></i>
+    <div class="stars">
 
-        <input
-            type="text"
-            id="searchService"
-            placeholder="Search Service (Electrician, Plumber...)">
+        ⭐⭐⭐⭐⭐
 
     </div>
 
-    <div class="input-box">
+    <span>
 
-        <i class="fa-solid fa-location-dot"></i>
+        Trusted by 10,000+ Happy Customers Across India
 
-        <input
-            type="text"
-            id="searchCity"
-            placeholder="Enter City">
-
-    </div>
-
-    <button id="searchBtn">
-
-        <i class="fa-solid fa-magnifying-glass"></i>
-        Search
-
-    </button>
+    </span>
 
 </div>
 
             <!-- Buttons -->
-
             <div class="hero-buttons">
-
-                <button class="primary-btn">
-
+                <button class="primary-btn" type="button" onclick="scrollToSection('categories')">
                     Explore Services
-
                 </button>
-
-                <button class="secondary-btn">
-
+                <a href="register.html" class="secondary-btn" style="text-decoration:none; text-align:center;">
                     Become a Provider
-
-                </button>
-
+                </a>
             </div>
 
             <!-- Small Stats -->
-
             <div class="mini-stats">
-
                 <div>
-
                     <h3>10K+</h3>
-
                     <p>Customers</p>
-
                 </div>
-
                 <div>
-
                     <h3>500+</h3>
-
                     <p>Professionals</p>
-
                 </div>
-
                 <div>
-
                     <h3>4.9★</h3>
-
                     <p>Rating</p>
-
                 </div>
-
             </div>
 
         </div>
 
         <!-- Right -->
-
         <div class="hero-right" data-aos="fade-left">
 
-            <img src="images/hero.png" alt="Hero Image">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&q=80&auto=format&fit=crop"
+                alt="Professional home service technician at work" loading="eager">
 
             <!-- Floating Card -->
-
             <div class="floating-card">
-
                 <i class="fa-solid fa-circle-check"></i>
-
                 <div>
-
                     <h4>Verified Professionals</h4>
-
                     <p>100% Background Verified</p>
-
                 </div>
-
             </div>
 
         </div>
@@ -238,576 +176,373 @@
     </section>
 
     <!-- ================= TRUSTED BRANDS ================= -->
+    <section class="trusted">
+        <p>Trusted by Thousands of Customers Across India</p>
+        <div class="brand-box">
+            <span>⭐ 4.9 Google Rating</span>
+            <span>✔ Secure Payments</span>
+            <span>✔ Verified Experts</span>
+            <span>✔ Same Day Service</span>
+        </div>
+    </section>
 
-<section class="trusted">
+    <!-- ================= SERVICE CATEGORIES ================= -->
+    <section id="categories" class="categories">
 
-    <p>Trusted by Thousands of Customers Across India</p>
+        <div class="section-header">
+            <h2 class="section-title">Popular Service Categories</h2>
+            <p class="section-subtitle">Choose from our most requested professional services.</p>
+        </div>
 
-    <div class="brand-box">
+        <div class="category-grid">
 
-        <span>⭐ 4.9 Google Rating</span>
+            <div class="category-card" data-category="Electrician" tabindex="0">
+                <div class="category-icon">⚡</div>
+                <h3>Electrician</h3>
+                <p>Electrical repairs & installation</p>
+            </div>
 
-        <span>✔ Secure Payments</span>
+            <div class="category-card" data-category="Plumber" tabindex="0">
+                <div class="category-icon">🚰</div>
+                <h3>Plumber</h3>
+                <p>Leakage, pipes & fittings</p>
+            </div>
 
-        <span>✔ Verified Experts</span>
+            <div class="category-card" data-category="Carpenter" tabindex="0">
+                <div class="category-icon">🪚</div>
+                <h3>Carpenter</h3>
+                <p>Furniture & woodwork</p>
+            </div>
 
-        <span>✔ Same Day Service</span>
+            <div class="category-card" data-category="Painter" tabindex="0">
+                <div class="category-icon">🎨</div>
+                <h3>Painter</h3>
+                <p>Interior & exterior painting</p>
+            </div>
 
-    </div>
+            <div class="category-card" data-category="Cleaner" tabindex="0">
+                <div class="category-icon">🧹</div>
+                <h3>Cleaner</h3>
+                <p>Home & office cleaning</p>
+            </div>
 
-</section>
+            <div class="category-card" data-category="Mechanic" tabindex="0">
+                <div class="category-icon">🚗</div>
+                <h3>Mechanic</h3>
+                <p>Vehicle repair services</p>
+            </div>
 
-<!-- ================= FEATURED PROFESSIONALS ================= -->
+            <div class="category-card" data-category="Tutor" tabindex="0">
+                <div class="category-icon">📚</div>
+                <h3>Tutor</h3>
+                <p>Online & offline classes</p>
+            </div>
 
-<section id="providers" class="providers">
-
-    <h2 class="section-title">
-        Featured Professionals
-    </h2>
-
-    <p class="section-subtitle">
-        Browse verified professionals available in your city.
-    </p>
-
-    <!-- ================= My Services ================= -->
-     <section id="myServices" class="providers">
-
-    <h2 class="section-title">
-        My Services
-    </h2>
-
-    <p class="section-subtitle">
-        Manage the services you've added.
-    </p>
-
-    <div class="provider-grid" id="myServicesGrid">
-
-        <div class="loading">
-
-            <i class="fa-solid fa-spinner fa-spin"></i>
-
-            <h3>Loading Your Services...</h3>
+            <div class="category-card" data-category="Other" tabindex="0">
+                <div class="category-icon">🛠️</div>
+                <h3>More Services</h3>
+                <p>Explore all available services</p>
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <!-- ================= FEATURED PROFESSIONALS ================= -->
+    <section id="providers" class="providers">
 
-    <!-- Dynamic Provider Cards -->
-    <div class="provider-grid" id="providerGrid">
-
-        <div class="loading">
-
-            <i class="fa-solid fa-spinner fa-spin"></i>
-
-            <h3>Loading Professionals...</h3>
-
-            <p>Please wait while we fetch services.</p>
-
+        <div class="section-header">
+            <h2 class="section-title">Featured Professionals</h2>
+            <p class="section-subtitle">Find verified professionals near you.</p>
         </div>
 
-    </div>
-
-</section>
-<!-- ================= WHY CHOOSE US ================= -->
-
-<section id="about" class="why">
-
-    <h2 class="section-title">
-        Why Choose Us
-    </h2>
-
-    <div class="why-grid">
-
-        <div class="why-card">
-
-            <i class="fa-solid fa-user-check"></i>
-
-            <h3>Verified Experts</h3>
-
-            <p>
-                Every professional is verified before joining our platform.
-            </p>
-
-        </div>
-
-        <div class="why-card">
-
-            <i class="fa-solid fa-wallet"></i>
-
-            <h3>Affordable Pricing</h3>
-
-            <p>
-                Transparent pricing with no hidden charges.
-            </p>
-
-        </div>
-
-        <div class="why-card">
-
-            <i class="fa-solid fa-clock"></i>
-
-            <h3>Fast Booking</h3>
-
-            <p>
-                Book your service in less than 60 seconds.
-            </p>
-
-        </div>
-
-        <div class="why-card">
-
-            <i class="fa-solid fa-headset"></i>
-
-            <h3>24×7 Support</h3>
-
-            <p>
-                Friendly customer support whenever you need help.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= POPULAR CITIES ================= -->
-
-<section class="cities">
-
-    <h2 class="section-title">
-
-        Available In Popular Cities
-
-    </h2>
-
-    <div class="city-grid">
-
-        <div class="city-card">🏙️ Delhi</div>
-
-        <div class="city-card">🏙️ Mumbai</div>
-
-        <div class="city-card">🏙️ Indore</div>
-
-        <div class="city-card">🏙️ Pune</div>
-
-        <div class="city-card">🏙️ Jaipur</div>
-
-        <div class="city-card">🏙️ Bhopal</div>
-
-        <div class="city-card">🏙️ Ahmedabad</div>
-
-        <div class="city-card">🏙️ Lucknow</div>
-
-    </div>
-
-</section>
-
-<!-- ================= DOWNLOAD APP ================= -->
-
-<section class="app-section">
-
-    <div class="app-content">
-
-        <h2>
-
-            Download Our Mobile App
-
-        </h2>
-
-        <p>
-
-            Book trusted professionals anytime, anywhere.
-
-        </p>
-
-        <button class="primary-btn">
-
-            <i class="fa-brands fa-google-play"></i>
-
-            Google Play
-
-        </button>
-
-        <button class="secondary-btn">
-
-            <i class="fa-brands fa-apple"></i>
-
-            App Store
-
-        </button>
-
-    </div>
-
-</section>
-
-<!-- ===================== TESTIMONIALS ===================== -->
-
-<section class="testimonials">
-
-    <h2 class="section-title">What Our Customers Say</h2>
-
-    <p class="section-subtitle">
-        Trusted by thousands of happy customers across India.
-    </p>
-
-    <div class="testimonial-grid">
-
-        <div class="testimonial-card">
-            <img src="images/user1.jpg" alt="Customer">
-            <h3>Rohit Sharma</h3>
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p>
-                Excellent service! The electrician arrived on time and fixed everything perfectly.
-            </p>
-        </div>
-
-        <div class="testimonial-card">
-            <img src="images/user2.jpg" alt="Customer">
-            <h3>Neha Gupta</h3>
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p>
-                Super easy booking experience. Highly recommended!
-            </p>
-        </div>
-
-        <div class="testimonial-card">
-            <img src="images/user3.jpg" alt="Customer">
-            <h3>Amit Verma</h3>
-            <div class="stars">⭐⭐⭐⭐⭐</div>
-            <p>
-                Affordable pricing and verified professionals. Will definitely use again.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ===================== FAQ ===================== -->
-
-<section class="faq">
-
-    <h2 class="section-title">Frequently Asked Questions</h2>
-
-    <div class="faq-container">
-
-        <div class="faq-item">
-            <button class="faq-question">
-                How do I book a service?
-            </button>
-
-            <div class="faq-answer">
-                Visit the service page, choose your provider and click Book Now.
+        <div id="providerGrid" class="provider-grid">
+            <div class="loading-card">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+                <h3>Loading Professionals...</h3>
+                <p>Please wait while we fetch the latest services.</p>
             </div>
         </div>
 
-        <div class="faq-item">
-            <button class="faq-question">
-                Are professionals verified?
-            </button>
+    </section>
 
-            <div class="faq-answer">
-                Yes. Every provider goes through identity and quality verification.
+    <!-- ================= MY SERVICES (shown only when logged in — control via JS) ================= -->
+    <section id="myServices" class="providers">
+
+        <div class="section-header">
+            <h2 class="section-title">My Services</h2>
+            <p class="section-subtitle">Manage all services you've added.</p>
+        </div>
+
+        <div id="myServicesGrid" class="provider-grid">
+            <div class="loading-card">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+                <h3>Loading Your Services...</h3>
             </div>
         </div>
 
-        <div class="faq-item">
-            <button class="faq-question">
-                Can I cancel a booking?
-            </button>
+    </section>
 
-            <div class="faq-answer">
-                Yes. You can cancel according to the cancellation policy.
+    <!-- ================= WHY CHOOSE US ================= -->
+    <section id="about" class="why">
+
+        <h2 class="section-title">Why Choose Us</h2>
+
+        <div class="why-grid">
+
+            <div class="why-card">
+                <i class="fa-solid fa-user-check"></i>
+                <h3>Verified Experts</h3>
+                <p>Every professional is verified before joining our platform.</p>
             </div>
+
+            <div class="why-card">
+                <i class="fa-solid fa-wallet"></i>
+                <h3>Affordable Pricing</h3>
+                <p>Transparent pricing with no hidden charges.</p>
+            </div>
+
+            <div class="why-card">
+                <i class="fa-solid fa-clock"></i>
+                <h3>Fast Booking</h3>
+                <p>Book your service in less than 60 seconds.</p>
+            </div>
+
+            <div class="why-card">
+                <i class="fa-solid fa-headset"></i>
+                <h3>24×7 Support</h3>
+                <p>Friendly customer support whenever you need help.</p>
+            </div>
+
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <!-- ================= POPULAR CITIES ================= -->
+    <section class="cities">
 
-<!-- ===================== NEWSLETTER ===================== -->
+        <h2 class="section-title">Available In Popular Cities</h2>
 
-<section class="newsletter">
+        <div class="city-grid">
+            <div class="city-card">🏙️ Delhi</div>
+            <div class="city-card">🏙️ Mumbai</div>
+            <div class="city-card">🏙️ Indore</div>
+            <div class="city-card">🏙️ Pune</div>
+            <div class="city-card">🏙️ Jaipur</div>
+            <div class="city-card">🏙️ Bhopal</div>
+            <div class="city-card">🏙️ Ahmedabad</div>
+            <div class="city-card">🏙️ Lucknow</div>
+        </div>
 
-    <h2>Stay Updated</h2>
+    </section>
 
-    <p>
-        Subscribe to receive offers and updates.
-    </p>
-
-    <form>
-
-        <input
-            type="email"
-            placeholder="Enter your email"
-            required
-        >
-
-        <button type="submit">
-            Subscribe
-        </button>
-
-    </form>
-
-</section>
-
-<!-- ===================== CONTACT ===================== -->
-
-<section id="contact" class="contact">
-
-    <h2 class="section-title">
-        Contact Us
-    </h2>
-
-    <div class="contact-container">
-
-        <form class="contact-form">
-
-            <input
-                type="text"
-                placeholder="Your Name"
-                required
-            >
-
-            <input
-                type="email"
-                placeholder="Email Address"
-                required
-            >
-
-            <textarea
-                rows="6"
-                placeholder="Your Message"
-            ></textarea>
-
-            <button type="submit">
-                Send Message
+    <!-- ================= DOWNLOAD APP ================= -->
+    <section class="app-section">
+        <div class="app-content">
+            <h2>Download Our Mobile App</h2>
+            <p>Book trusted professionals anytime, anywhere.</p>
+            <button class="primary-btn" type="button">
+                <i class="fa-brands fa-google-play"></i>
+                Google Play
             </button>
+            <button class="secondary-btn" type="button">
+                <i class="fa-brands fa-apple"></i>
+                App Store
+            </button>
+        </div>
+    </section>
 
+    <!-- ===================== TESTIMONIALS ===================== -->
+    <section class="testimonials">
+
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Trusted by thousands of happy customers across India.</p>
+
+        <div class="testimonial-grid">
+
+            <div class="testimonial-card">
+                <img src="https://i.pravatar.cc/100?img=12" alt="Rohit Sharma" loading="lazy">
+                <h3>Rohit Sharma</h3>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>Excellent service! The electrician arrived on time and fixed everything perfectly.</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="https://i.pravatar.cc/100?img=47" alt="Neha Gupta" loading="lazy">
+                <h3>Neha Gupta</h3>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>Super easy booking experience. Highly recommended!</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="https://i.pravatar.cc/100?img=33" alt="Amit Verma" loading="lazy">
+                <h3>Amit Verma</h3>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>Affordable pricing and verified professionals. Will definitely use again.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="faq">
+
+        <h2 class="section-title">Frequently Asked Questions</h2>
+
+        <div class="faq-container">
+
+            <div class="faq-item">
+                <button class="faq-question" type="button">How do I book a service?</button>
+                <div class="faq-answer">Visit the service page, choose your provider and click Book Now.</div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" type="button">Are professionals verified?</button>
+                <div class="faq-answer">Yes. Every provider goes through identity and quality verification.</div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" type="button">Can I cancel a booking?</button>
+                <div class="faq-answer">Yes. You can cancel according to the cancellation policy.</div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================== NEWSLETTER ===================== -->
+    <section class="newsletter">
+
+        <h2>Stay Updated</h2>
+        <p>Subscribe to receive offers and updates.</p>
+
+        <form id="newsletterForm">
+            <input type="email" id="newsletterEmail" placeholder="Enter your email" aria-label="Email address" required>
+            <button type="submit">Subscribe</button>
         </form>
 
-    </div>
+    </section>
 
-</section>
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="contact">
 
-<div id="serviceModal" class="modal">
+        <h2 class="section-title">Contact Us</h2>
 
-    <div class="modal-content">
+        <div class="contact-container">
 
-        <span class="close" onclick="closeModal()">&times;</span>
-
-        <h2>Add Service</h2>
-
-        <form id="serviceForm">
-
-            <input
-                id="serviceName"
-                placeholder="Service Name"
-                required>
-
-            <input
-                id="serviceCategory"
-                placeholder="Category"
-                required>
-
-            <input
-                id="serviceCity"
-                placeholder="City"
-                required>
-
-            <input
-                id="servicePrice"
-                type="number"
-                placeholder="Price"
-                required>
-
-            <textarea
-                id="serviceDescription"
-                placeholder="Description"></textarea>
-
-            <button type="submit">
-
-                Save Service
-
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-<!-- ================= ADD SERVICE MODAL ================= -->
-
-<div id="serviceModal" class="modal">
-
-    <div class="modal-content">
-
-        <span class="close-btn" onclick="closeModal()">
-            &times;
-        </span>
-
-        <h2>Add New Service</h2>
-
-        <form id="serviceForm">
-
-            <div class="form-group">
-
-                <label>Service Name</label>
-
-                <input
-                    type="text"
-                    id="serviceName"
-                    placeholder="Electrician"
-                    required>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Category</label>
-
-                <select id="serviceCategory" required>
-
-                    <option value="">Select Category</option>
-
-                    <option>Electrician</option>
-                    <option>Plumber</option>
-                    <option>Carpenter</option>
-                    <option>Painter</option>
-                    <option>Cleaner</option>
-                    <option>Mechanic</option>
-                    <option>Tutor</option>
-                    <option>Other</option>
-
-                </select>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>City</label>
-
-                <input
-                    type="text"
-                    id="serviceCity"
-                    placeholder="Indore"
-                    required>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Price (₹)</label>
-
-                <input
-                    type="number"
-                    id="servicePrice"
-                    placeholder="500"
-                    required>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Description</label>
-
-                <textarea
-                    id="serviceDescription"
-                    rows="4"
-                    placeholder="Describe your service..."
-                    required></textarea>
-
-            </div>
-
-            <button
-                type="submit"
-                class="primary-btn">
-
-                Save Service
-
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-<!-- ===================== FOOTER ===================== -->
-
-<footer>
-
-    <div class="footer-container">
-
-        <div>
-
-            <h3>Local Service Finder</h3>
-
-            <p>
-                Connecting customers with trusted professionals across India.
-            </p>
+            <form class="contact-form" id="contactForm">
+                <input type="text" id="contactName" placeholder="Your Name" aria-label="Your name" required>
+                <input type="email" id="contactEmail" placeholder="Email Address" aria-label="Your email" required>
+                <textarea rows="6" id="contactMessage" placeholder="Your Message" aria-label="Your message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
 
         </div>
 
-        <div>
+    </section>
 
-            <h3>Quick Links</h3>
+    <!-- ================= ADD SERVICE MODAL ================= -->
+    <div id="serviceModal" class="modal">
 
-            <a href="#">Home</a>
-            <a href="#services">Services</a>
-            <a href="#providers">Providers</a>
-            <a href="#contact">Contact</a>
+        <div class="modal-content">
 
-        </div>
+            <span class="close-btn" onclick="closeModal()">&times;</span>
 
-        <div>
+            <h2>Add New Service</h2>
 
-            <h3>Follow Us</h3>
+            <form id="serviceForm">
 
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+                <div class="form-group">
+                    <label for="serviceName">Service Name</label>
+                    <input type="text" id="serviceName" placeholder="Electrician" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="serviceCategory">Category</label>
+                    <select id="serviceCategory" required>
+                        <option value="">Select Category</option>
+                        <option>Electrician</option>
+                        <option>Plumber</option>
+                        <option>Carpenter</option>
+                        <option>Painter</option>
+                        <option>Cleaner</option>
+                        <option>Mechanic</option>
+                        <option>Tutor</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="serviceCity">City</label>
+                    <input type="text" id="serviceCity" placeholder="Indore" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="servicePrice">Price (₹)</label>
+                    <input type="number" id="servicePrice" placeholder="500" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="serviceDescription">Description</label>
+                    <textarea id="serviceDescription" rows="4" placeholder="Describe your service..." required></textarea>
+                </div>
+
+                <button type="submit" class="primary-btn">Save Service</button>
+
+            </form>
 
         </div>
 
     </div>
 
-    <hr>
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
 
-    <p class="copyright">
+        <div class="footer-container">
 
-        © 2026 Local Service Finder. All Rights Reserved.
+            <div>
+                <h3>Local Service Finder</h3>
+                <p>Connecting customers with trusted professionals across India.</p>
+            </div>
 
-    </p>
+            <div>
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#categories">Services</a>
+                <a href="#providers">Providers</a>
+                <a href="#contact">Contact</a>
+            </div>
 
-</footer>
+            <div>
+                <h3>Follow Us</h3>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
 
-<!-- Scroll To Top -->
+        </div>
 
-<button id="scrollTop">
+        <hr>
 
-    <i class="fa-solid fa-arrow-up"></i>
+        <p class="copyright">© 2026 Local Service Finder. All Rights Reserved.</p>
 
-</button>
+    </footer>
 
-<!-- JavaScript -->
+    <!-- Scroll To Top -->
+    <button id="scrollTop" aria-label="Scroll to top" type="button">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <script>
-
         AOS.init({
-
             duration: 1000,
-
             once: true
-
         });
-
     </script>
 
     <script src="lsf.js"></script>
